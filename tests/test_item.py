@@ -20,7 +20,6 @@ def test_calculate_total_price(notebook):
     assert notebook.calculate_total_price() == 50000
 
 
-
 Item.pay_rate = 0.8
 
 

@@ -1,3 +1,7 @@
+import csv
+import math
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -13,7 +17,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
@@ -31,3 +35,29 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, doc_string):
+        if len(doc_string) > 10:
+            self.__name = doc_string[:10]
+        else:
+            self.__name = doc_string
+
+    @classmethod
+    def instantiate_from_csv(cls):
+        cls.all = []
+        with open("/home/azzlem/PycharmProjects/electronics-shop-project/src/items.csv", "r", encoding="windows-1251") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                Item(row['name'], int(row['price']), int(row['quantity']))
+
+    @staticmethod
+    def string_to_number(string_in):
+        try:
+            return math.floor(float(string_in))
+        except:
+            return "This is not a string"
