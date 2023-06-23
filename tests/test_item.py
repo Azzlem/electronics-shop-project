@@ -26,3 +26,18 @@ Item.pay_rate = 0.8
 def test_apply_discount(notebook):
     notebook.apply_discount()
     assert notebook.price == 800
+
+
+def test_name(notebook):
+    assert notebook.name == "notebook"
+    notebook.name = "Ноутбук"
+    assert notebook.name == "Ноутбук"
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 5
+
+def test_string_to_number():
+    assert Item.string_to_number("54.8") == 54
+
