@@ -1,5 +1,4 @@
 import csv
-import math
 
 
 class Item:
@@ -50,14 +49,14 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
-        with open("/home/azzlem/PycharmProjects/electronics-shop-project/src/items.csv", "r", encoding="windows-1251") as file:
+        with open("../src/items.csv", "r", encoding="windows-1251") as file:
             reader = csv.DictReader(file)
             for row in reader:
-                Item(row['name'], int(row['price']), int(row['quantity']))
+                Item(row['name'], float(row['price']), Item.string_to_number(row['quantity']))
 
     @staticmethod
     def string_to_number(string_in):
         try:
-            return math.floor(float(string_in))
+            return int(float(string_in))
         except:
             return "This is not a string"
