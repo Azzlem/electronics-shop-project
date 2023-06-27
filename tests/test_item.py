@@ -44,7 +44,7 @@ def test_string_to_number():
 
 
 def test_repr(notebook):
-    assert notebook.__repr__() == f'Item(notebook, 1000, 50)'
+    assert repr(notebook) == f'Item(notebook, 1000, 50)'
 
 def test_str(notebook):
-    assert notebook.__str__() == f"notebook"
+    assert str(notebook) == f"notebook"
