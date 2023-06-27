@@ -38,6 +38,13 @@ def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
 
+
 def test_string_to_number():
     assert Item.string_to_number("54.8") == 54
 
+
+def test_repr(notebook):
+    assert notebook.__repr__() == f'Item(notebook, 1000, 50)'
+
+def test_str(notebook):
+    assert notebook.__str__() == f"notebook"
