@@ -27,6 +27,3 @@ class Phone(Item):
         else:
             print("ValueError: Количество физических SIM-карт должно быть целым числом больше нуля.")
 
-class Puf:
-    def __init__(self, quantity):
-        self.quantity = quantity
