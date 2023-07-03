@@ -25,7 +25,7 @@ class Item:
         return f"{Item.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
     def __str__(self):
-        return f"{self.__name }"
+        return f"{self.__name}"
 
     def calculate_total_price(self) -> float:
         """
@@ -66,3 +66,8 @@ class Item:
             return int(float(string_in))
         except:
             return "This is not a string"
+
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+
