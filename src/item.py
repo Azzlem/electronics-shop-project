@@ -20,6 +20,7 @@ class Item:
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
+        super().__init__()
 
     def __repr__(self):
         return f"{Item.__name__}('{self.__name}', {self.price}, {self.quantity})"
@@ -70,4 +71,3 @@ class Item:
     def __add__(self, other):
         if isinstance(other, Item):
             return self.quantity + other.quantity
-
