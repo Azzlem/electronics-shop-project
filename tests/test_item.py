@@ -1,7 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 
 import pytest
-from src.item import Item
+from src.item import Item, FileNotFound, InstantiateCSV
 
 
 @pytest.fixture
@@ -35,6 +35,8 @@ def test_name(notebook):
 
 
 def test_instantiate_from_csv():
+    Item.instantiate_from_csv("aaa.csv")
+    Item.instantiate_from_csv("items.csv")
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
 
@@ -45,6 +47,7 @@ def test_string_to_number():
 
 def test_repr(notebook):
     assert repr(notebook) == f'Item(notebook, 1000, 50)'
+
 
 def test_str(notebook):
     assert str(notebook) == f"notebook"
